@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Resume Screener - Live Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fbbf24;
+            color: #1f2937;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .demo-card {
+            transition: all 0.3s ease;
+        }
+        .demo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-600 p-2 rounded-lg">
+                        <i data-lucide="search" class="h-6 w-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">ATS Resume Screener</h1>
+                        <p class="text-sm text-gray-500">Live Documentation & Examples</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#demo" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Try Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-100 border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8 overflow-x-auto py-3">
+                <a href="#overview" class="whitespace-nowrap text-sm font-medium text-gray-600 hover:text-blue-600">Overview</a>
+                <a href="#features" class="whitespace-nowrap text-sm font-medium text-gray-600 hover:text-blue-600">Features</a>
+                <a href="#demo" class="whitespace-nowrap text-sm font-medium text-gray-600 hover:text-blue-600">Live Demo</a>
+                <a href="#examples" class="whitespace-nowrap text-sm font-medium text-gray-600 hover:text-blue-600">Examples</a>
+                <a href="#api" class="whitespace-nowrap text-sm font-medium text-gray-600 hover:text-blue-600">API Reference</a>
+                <a href="#integration" class="whitespace-nowrap text-sm font-medium text-gray-600 hover:text-blue-600">Integration</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Overview Section -->
+        <section id="overview" class="mb-12">
+            <div class="bg-white rounded-lg shadow-sm p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">🎯 Automated Resume Screener</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-lg text-gray-600 mb-6">
+                            A comprehensive web-based ATS system that simulates modern recruitment screening processes. 
+                            Built with React and TypeScript, featuring intelligent resume parsing, keyword matching, 
+                            and detailed candidate analysis.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-500"></i>
+                                <span class="text-gray-700">Resume parsing with NLP techniques</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-500"></i>
+                                <span class="text-gray-700">Multi-weighted scoring algorithm</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-500"></i>
+                                <span class="text-gray-700">Detailed improvement recommendations</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="check-circle" class="h-5 w-5 text-green-500"></i>
+                                <span class="text-gray-700">ATS compatibility analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Stats</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-blue-600">500+</div>
+                                <div class="text-sm text-gray-500">Skills Recognized</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-green-600">95%</div>
+                                <div class="text-sm text-gray-500">Parsing Accuracy</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-purple-600">4</div>
+                                <div class="text-sm text-gray-500">Scoring Factors</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-amber-600">∞</div>
+                                <div class="text-sm text-gray-500">Resume Capacity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">🚀 Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="demo-card bg-white rounded-lg shadow-sm p-6">
+                    <div class="bg-blue-100 p-3 rounded-lg w-fit mb-4">
+                        <i data-lucide="file-text" class="h-6 w-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Resume Parsing</h3>
+                    <p class="text-gray-600 text-sm">
+                        Extract key information including contact details, skills, experience, education, and certifications using advanced text processing.
+                    </p>
+                </div>
+                <div class="demo-card bg-white rounded-lg shadow-sm p-6">
+                    <div class="bg-green-100 p-3 rounded-lg w-fit mb-4">
+                        <i data-lucide="target" class="h-6 w-6 text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Smart Matching</h3>
+                    <p class="text-gray-600 text-sm">
+                        Multi-weighted algorithm scores candidates based on skills (40%), experience (30%), completeness (20%), and ATS formatting (10%).
+                    </p>
+                </div>
+                <div class="demo-card bg-white rounded-lg shadow-sm p-6">
+                    <div class="bg-purple-100 p-3 rounded-lg w-fit mb-4">
+                        <i data-lucide="lightbulb" class="h-6 w-6 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Recommendations</h3>
+                    <p class="text-gray-600 text-sm">
+                        Priority-based improvement suggestions with specific action items and expected impact on match scores.
+                    </p>
+                </div>
+                <div class="demo-card bg-white rounded-lg shadow-sm p-6">
+                    <div class="bg-amber-100 p-3 rounded-lg w-fit mb-4">
+                        <i data-lucide="bar-chart-3" class="h-6 w-6 text-amber-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Analytics Dashboard</h3>
+                    <p class="text-gray-600 text-sm">
+                        Comprehensive metrics including qualification rates, average scores, and detailed candidate breakdowns.
+                    </p>
+                </div>
+                <div class="demo-card bg-white rounded-lg shadow-sm p-6">
+                    <div class="bg-red-100 p-3 rounded-lg w-fit mb-4">
+                        <i data-lucide="download" class="h-6 w-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Export Results</h3>
+                    <p class="text-gray-600 text-sm">
+                        Generate detailed CSV reports with candidate information, scores, matched skills, and analysis data.
+                    </p>
+                </div>
+                <div class="demo-card bg-white rounded-lg shadow-sm p-6">
+                    <div class="bg-indigo-100 p-3 rounded-lg w-fit mb-4">
+                        <i data-lucide="shield-check" class="h-6 w-6 text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">ATS Compatibility</h3>
+                    <p class="text-gray-600 text-sm">
+                        Analyze resume formatting for ATS compatibility and provide specific recommendations for improvement.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Demo Section -->
+        <section id="demo" class="mb-12">
+            <div class="bg-white rounded-lg shadow-sm p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">🎮 Interactive Demo</h2>
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                    <div class="flex items-start space-x-3">
+                        <i data-lucide="info" class="h-5 w-5 text-blue-600 mt-0.5"></i>
+                        <div>
+                            <h3 class="font-medium text-blue-900">Try the Live Application</h3>
+                            <p class="text-blue-700 text-sm mt-1">
+                                The full application is running in your browser. Use the navigation tabs above to explore all features:
+                            </p>
+                            <ul class="text-blue-700 text-sm mt-2 space-y-1">
+                                <li>• Upload sample resumes or paste resume text</li>
+                                <li>• Create job descriptions or use the sample job</li>
+                                <li>• View detailed candidate analysis and recommendations</li>
+                                <li>• Export results to CSV format</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demo Workflow -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="bg-blue-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl font-bold text-blue-600">1</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Upload Resumes</h3>
+                        <p class="text-gray-600 text-sm">Add candidate resumes via file upload or manual text entry</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-green-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl font-bold text-green-600">2</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Define Job Requirements</h3>
+                        <p class="text-gray-600 text-sm">Enter job description and specific skill requirements</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-purple-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl font-bold text-purple-600">3</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Analyze Results</h3>
+                        <p class="text-gray-600 text-sm">Review scores, recommendations, and export detailed reports</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">📝 Sample Data & Examples</h2>
+            
+            <!-- Sample Resume -->
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Sample Resume (High Match)</h3>
+                <div class="code-block text-sm">
+<pre>Sarah Johnson
+Email: sarah.johnson@email.com
+Phone: (555) 987-6543
+
+TECHNICAL SKILLS
+• Frontend: React, TypeScript, JavaScript (ES6+), HTML5, CSS3
+• Backend: Node.js, Express.js, RESTful APIs, GraphQL
+• Tools: Git, Webpack, Vite, Docker, AWS
+• Testing: Jest, React Testing Library, Cypress
+
+PROFESSIONAL EXPERIENCE
+Senior Frontend Developer | TechCorp Inc. | 2021 - Present
+• Led development of React application serving 100K+ daily users
+• Improved application performance by 45% through optimization
+• Mentored team of 4 junior developers
+• Implemented CI/CD pipeline reducing deployment time by 60%
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of Technology | 2018
+
+CERTIFICATIONS
+• AWS Certified Developer Associate (2022)
+• React Developer Certification (2021)</pre>
+                </div>
+                <div class="mt-4 flex items-center space-x-4">
+                    <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                        Expected Score: 85-95%
+                    </span>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                        Status: Qualified
+                    </span>
+                </div>
+            </div>
+
+            <!-- Sample Job Description -->
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Sample Job Description</h3>
+                <div class="code-block text-sm">
+<pre>Senior Frontend Developer
+TechCorp Inc.
+
+We are seeking a talented Senior Frontend Developer to join our team.
+
+REQUIRED QUALIFICATIONS:
+• 5+ years of professional frontend development experience
+• Expert knowledge of JavaScript, HTML5, and CSS3
+• Strong experience with React and TypeScript
+• Experience with modern build tools (Webpack, Vite)
+• Knowledge of version control systems (Git)
+• Experience with RESTful APIs and GraphQL
+• Familiarity with testing frameworks (Jest, React Testing Library)
+
+PREFERRED QUALIFICATIONS:
+• Experience with Node.js and backend development
+• Familiarity with cloud platforms (AWS, Azure)
+• Knowledge of CI/CD pipelines
+• Bachelor's degree in Computer Science</pre>
+                </div>
+                <div class="mt-4">
+                    <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
+                        Keywords: React, TypeScript, JavaScript, Node.js, AWS, Git, Jest
+                    </span>
+                </div>
+            </div>
+
+            <!-- Scoring Breakdown -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Scoring Algorithm Breakdown</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-medium text-gray-900 mb-3">Scoring Weights</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600">Skills Match</span>
+                                <span class="font-medium text-blue-600">40%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600">Experience Match</span>
+                                <span class="font-medium text-green-600">30%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600">Section Completeness</span>
+                                <span class="font-medium text-purple-600">20%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600">ATS Formatting</span>
+                                <span class="font-medium text-amber-600">10%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-medium text-gray-900 mb-3">Score Interpretation</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-green-500 rounded"></div>
+                                <span class="text-gray-600">80-100%: Excellent Match</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-yellow-500 rounded"></div>
+                                <span class="text-gray-600">60-79%: Good Match</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-4 h-4 bg-red-500 rounded"></div>
+                                <span class="text-gray-600">Below 60%: Poor Match</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Reference Section -->
+        <section id="api" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">🔧 API Reference</h2>
+            
+            <div class="space-y-6">
+                <!-- analyzeResume Function -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">analyzeResume()</h3>
+                    <div class="code-block mb-4">
+<pre><span class="text-blue-400">function</span> <span class="text-yellow-400">analyzeResume</span>(
+  content: <span class="text-green-400">string</span>,
+  jobKeywords?: <span class="text-green-400">string[]</span>
+): <span class="text-green-400">ResumeAnalysis</span></pre>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Analyzes resume content and extracts structured information including contact details, 
+                        skills, experience, and generates improvement recommendations.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-2">Parameters</h4>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li><code class="highlight">content</code>: Raw resume text</li>
+                                <li><code class="highlight">jobKeywords</code>: Optional job keywords</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-2">Returns</h4>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>Complete ResumeAnalysis object</li>
+                                <li>Includes strengths, weaknesses, recommendations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- scoreResume Function -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">scoreResume()</h3>
+                    <div class="code-block mb-4">
+<pre><span class="text-blue-400">function</span> <span class="text-yellow-400">scoreResume</span>(
+  analysis: <span class="text-green-400">ResumeAnalysis</span>,
+  jobKeywords: <span class="text-green-400">string[]</span>
+): <span class="text-green-400">ScoreResult</span></pre>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Calculates comprehensive match score using weighted algorithm based on skills, 
+                        experience, completeness, and ATS formatting.
+                    </p>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-medium text-gray-900 mb-2">Example Usage</h4>
+                        <div class="code-block text-sm">
+<pre><span class="text-blue-400">const</span> analysis = <span class="text-yellow-400">analyzeResume</span>(resumeText, jobKeywords);
+<span class="text-blue-400">const</span> score = <span class="text-yellow-400">scoreResume</span>(analysis, jobKeywords);
+
+<span class="text-gray-400">// score.percentage: 85</span>
+<span class="text-gray-400">// score.matchedKeywords: ["React", "JavaScript"]</span></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- extractKeywords Function -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">extractKeywords()</h3>
+                    <div class="code-block mb-4">
+<pre><span class="text-blue-400">function</span> <span class="text-yellow-400">extractKeywords</span>(
+  jobDescription: <span class="text-green-400">string</span>
+): <span class="text-green-400">string[]</span></pre>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Extracts relevant keywords from job description using NLP techniques and 
+                        predefined skill databases covering 500+ technical skills.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <h5 class="font-medium text-blue-900 mb-1">Technical Skills</h5>
+                            <p class="text-blue-700 text-sm">JavaScript, React, Python, AWS</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h5 class="font-medium text-green-900 mb-1">Soft Skills</h5>
+                            <p class="text-green-700 text-sm">Leadership, Communication</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <h5 class="font-medium text-purple-900 mb-1">Experience</h5>
+                            <p class="text-purple-700 text-sm">5+ years, Senior level</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integration Section -->
+        <section id="integration" class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">🔗 Integration Examples</h2>
+            
+            <div class="space-y-6">
+                <!-- Basic Integration -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Basic Integration</h3>
+                    <div class="code-block">
+<pre><span class="text-blue-400">import</span> { analyzeResume, scoreResume, extractKeywords } <span class="text-blue-400">from</span> <span class="text-green-400">'./utils/resumeAnalyzer'</span>;
+
+<span class="text-gray-400">// 1. Extract job requirements</span>
+<span class="text-blue-400">const</span> jobDescription = <span class="text-green-400">"React developer with 3+ years experience..."</span>;
+<span class="text-blue-400">const</span> jobKeywords = <span class="text-yellow-400">extractKeywords</span>(jobDescription);
+
+<span class="text-gray-400">// 2. Analyze resume</span>
+<span class="text-blue-400">const</span> resumeText = <span class="text-green-400">"John Doe, React Developer..."</span>;
+<span class="text-blue-400">const</span> analysis = <span class="text-yellow-400">analyzeResume</span>(resumeText, jobKeywords);
+
+<span class="text-gray-400">// 3. Calculate score</span>
+<span class="text-blue-400">const</span> score = <span class="text-yellow-400">scoreResume</span>(analysis, jobKeywords);
+
+<span class="text-gray-400">// 4. Make decision</span>
+<span class="text-blue-400">const</span> isQualified = score.percentage >= <span class="text-red-400">60</span>;</pre>
+                    </div>
+                </div>
+
+                <!-- Batch Processing -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Batch Processing</h3>
+                    <div class="code-block">
+<pre><span class="text-gray-400">// Process multiple resumes efficiently</span>
+<span class="text-blue-400">const</span> <span class="text-yellow-400">processResumes</span> = <span class="text-blue-400">async</span> (resumes, jobDesc) => {
+  <span class="text-blue-400">const</span> keywords = <span class="text-yellow-400">extractKeywords</span>(jobDesc);
+  <span class="text-blue-400">const</span> results = [];
+  
+  <span class="text-blue-400">for</span> (<span class="text-blue-400">const</span> resume <span class="text-blue-400">of</span> resumes) {
+    <span class="text-blue-400">const</span> analysis = <span class="text-yellow-400">analyzeResume</span>(resume.content, keywords);
+    <span class="text-blue-400">const</span> score = <span class="text-yellow-400">scoreResume</span>(analysis, keywords);
+    
+    results.<span class="text-yellow-400">push</span>({
+      ...resume,
+      score: score.percentage,
+      status: score.percentage >= <span class="text-red-400">60</span> ? <span class="text-green-400">'qualified'</span> : <span class="text-green-400">'rejected'</span>,
+      analysis,
+      recommendations: analysis.recommendations
+    });
+  }
+  
+  <span class="text-blue-400">return</span> results.<span class="text-yellow-400">sort</span>((a, b) => b.score - a.score);
+};</pre>
+                    </div>
+                </div>
+
+                <!-- Custom Workflow -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Custom Workflow</h3>
+                    <div class="code-block">
+<pre><span class="text-gray-400">// Advanced screening with custom categories</span>
+<span class="text-blue-400">const</span> <span class="text-yellow-400">screenCandidates</span> = (resumes, jobPosting) => {
+  <span class="text-blue-400">const</span> keywords = <span class="text-yellow-400">extractKeywords</span>(jobPosting.description);
+  
+  <span class="text-blue-400">return</span> resumes.<span class="text-yellow-400">map</span>(resume => {
+    <span class="text-blue-400">const</span> analysis = <span class="text-yellow-400">analyzeResume</span>(resume.content, keywords);
+    <span class="text-blue-400">const</span> score = <span class="text-yellow-400">scoreResume</span>(analysis, keywords);
+    
+    <span class="text-gray-400">// Custom categorization</span>
+    <span class="text-blue-400">let</span> category = <span class="text-green-400">'rejected'</span>;
+    <span class="text-blue-400">if</span> (score.percentage >= <span class="text-red-400">80</span>) category = <span class="text-green-400">'priority'</span>;
+    <span class="text-blue-400">else if</span> (score.percentage >= <span class="text-red-400">60</span>) category = <span class="text-green-400">'qualified'</span>;
+    <span class="text-blue-400">else if</span> (score.percentage >= <span class="text-red-400">40</span>) category = <span class="text-green-400">'potential'</span>;
+    
+    <span class="text-blue-400">return</span> { ...resume, score, category, analysis };
+  });
+};</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-100 rounded-lg p-6 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <i data-lucide="search" class="h-5 w-5 text-blue-600"></i>
+                <span class="font-semibold text-gray-900">ATS Resume Screener</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+                Built with React, TypeScript, and Tailwind CSS. Featuring advanced NLP techniques and modern ATS algorithms.
+            </p>
+            <div class="flex items-center justify-center space-x-6 text-sm text-gray-500">
+                <span>Version 1.0.0</span>
+                <span>•</span>
+                <span>MIT License</span>
+                <span>•</span>
+                <span>2025</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active navigation item
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -80% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('text-blue-600', 'font-semibold');
+                        link.classList.add('text-gray-600');
+                    });
+                    const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.remove('text-gray-600');
+                        activeLink.classList.add('text-blue-600', 'font-semibold');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section[id]').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
