@@ -4,6 +4,19 @@ A comprehensive web-based Applicant Tracking System (ATS) that simulates modern 
 
 ![ATS Dashboard](https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&h=400&fit=crop)
 
+## 🌐 Live Preview
+
+**Try the live application:** [https://thriving-meerkat-61b58a.netlify.app](https://thriving-meerkat-61b58a.netlify.app)
+
+Experience the full functionality of the Automated Resume Screener directly in your browser:
+- Upload sample resumes or paste resume text
+- Create job descriptions with automatic keyword extraction
+- View detailed candidate analysis with improvement recommendations
+- Export comprehensive screening results to CSV
+- Explore interactive documentation and examples
+
+The live preview includes sample data and demonstrates all features of the ATS system, making it easy to understand the capabilities before implementation.
+
 ## 🚀 Features
 
 ### Core Functionality
