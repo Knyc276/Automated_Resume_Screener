@@ -94,3 +94,16 @@ export interface ScoreResult {
     totalPossible: number;
   };
 }
+
+export interface StoredScreeningResult {
+  id: string;
+  jobTitle: string;
+  company: string;
+  createdAt: Date;
+  totalCandidates: number;
+  qualifiedCandidates: number;
+  averageScore: number;
+  threshold: number;
+  scoredResumes: ScoredResume[];
+  jobDescription: JobDescriptionData;
+}

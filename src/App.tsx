@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import { Upload, FileText, Search, Filter, Download, CheckCircle, AlertCircle, X } from 'lucide-react';
+import { Upload, FileText, Search, Filter, Download, CheckCircle, AlertCircle, X, Archive } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import ResumeUpload from './components/ResumeUpload';
 import JobDescription from './components/JobDescription';
 import ResultsTable from './components/ResultsTable';
-import { Resume, JobDescriptionData, ScoredResume } from './types';
+import StoredResults from './components/StoredResults';
+import { Resume, JobDescriptionData, ScoredResume, StoredScreeningResult } from './types';
 import { analyzeResume, scoreResume } from './utils/resumeAnalyzer';
 import { extractKeywords } from './utils/keywordExtractor';
 import { exportToCSV } from './utils/exportUtils';
+import { saveScreeningResult } from './utils/storageUtils';
 
 function App() {
   const [resumes, setResumes] = useState<Resume[]>([]);
   const [jobDescription, setJobDescription] = useState<JobDescriptionData | null>(null);
   const [scoredResumes, setScoredResumes] = useState<ScoredResume[]>([]);
-  const [activeTab, setActiveTab] = useState<'upload' | 'job' | 'results'>('upload');
+  const [activeTab, setActiveTab] = useState<'upload' | 'job' | 'results' | 'stored'>('upload');
   const [scoreThreshold, setScoreThreshold] = useState(60);
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -23,6 +25,7 @@ function App() {
 
   const handleJobDescriptionSubmit = (jobDesc: JobDescriptionData) => {
     setJobDescription(jobDesc);
+    setScoredResumes([]); // Clear previous results when job changes
     setActiveTab('results');
   };
 
@@ -58,6 +61,30 @@ function App() {
     exportToCSV(scoredResumes, jobDescription);
   };
 
+  const handleSaveResults = () => {
+    if (!jobDescription || scoredResumes.length === 0) return;
+
+    const result: StoredScreeningResult = {
+      id: Math.random().toString(36).substr(2, 9),
+      jobTitle: jobDescription.title,
+      company: jobDescription.company || 'Unknown Company',
+      createdAt: new Date(),
+      totalCandidates: scoredResumes.length,
+      qualifiedCandidates: scoredResumes.filter(r => r.status === 'qualified').length,
+      averageScore: stats.avgScore,
+      threshold: scoreThreshold,
+      scoredResumes,
+      jobDescription
+    };
+
+    saveScreeningResult(result);
+  };
+
+  const handleLoadStoredResult = (result: StoredScreeningResult) => {
+    setJobDescription(result.jobDescription);
+    setScoredResumes(result.scoredResumes);
+    setScoreThreshold(result.threshold);
+    setActiveTab('results');
   const removeResume = (id: string) => {
     setResumes(prev => prev.filter(r => r.id !== id));
     setScoredResumes(prev => prev.filter(r => r.id !== id));
@@ -65,7 +92,7 @@ function App() {
 
   // Auto-process when both resumes and job description are available
   React.useEffect(() => {
-    if (resumes.length > 0 && jobDescription && activeTab === 'results') {
+    if (resumes.length > 0 && jobDescription && (activeTab === 'results' || scoredResumes.length === 0)) {
       processResumes();
     }
   }, [resumes, jobDescription, scoreThreshold, activeTab]);
@@ -77,6 +104,14 @@ function App() {
       ? Math.round(scoredResumes.reduce((sum, r) => sum + r.score, 0) / scoredResumes.length)
       : 0
   };
+
+  // Auto-save results when screening is complete
+  React.useEffect(() => {
+    if (scoredResumes.length > 0 && jobDescription) {
+      handleSaveResults();
+    }
+  }, [scoredResumes, jobDescription, scoreThreshold]);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -155,6 +190,17 @@ function App() {
                 {stats.qualified}/{stats.total}
               </span>
             )}
+          </button>
+          <button
+            onClick={() => setActiveTab('stored')}
+            className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-lg font-medium transition-colors ${
+              activeTab === 'stored'
+                ? 'bg-white text-blue-600 shadow-sm'
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            <Archive className="h-4 w-4" />
+            <span>Stored Results</span>
           </button>
         </div>
 
@@ -251,6 +297,10 @@ function App() {
                 />
               )}
             </div>
+          )}
+
+          {activeTab === 'stored' && (
+            <StoredResults onLoadResult={handleLoadStoredResult} />
           )}
         </div>
       </div>
